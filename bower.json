@@ -1,0 +1,17 @@
+{
+  "name": "purescript-lists-fast",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-lists": "^4.11.0",
+    "purescript-functions": "^3.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0",
+    "purescript-minibench": "^1.0.0"
+  }
+}
