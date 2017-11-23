@@ -6,6 +6,11 @@
     "bower_components",
     "output"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/paf31/purescript-lists-fast.git"
+  },
   "dependencies": {
     "purescript-lists": "^4.11.0",
     "purescript-functions": "^3.0.0"
