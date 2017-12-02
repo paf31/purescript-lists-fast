@@ -51,30 +51,18 @@ exports.filter = function(f) {
     if (input === Nil.value) {
       return input;
     } else {
-      var result = new Cons(null, null);
-
+      var result = new Cons(input.value0, Nil.value);
       var output = result;
 
-      while (true) {
+      while (input.value1 !== Nil.value) {
+        input = input.value1;
         var b = f(input.value0);
 
         if (b) {
-          output.value0 = input.value0;
-          output.value1 = new Cons(null, null);
-        }
-
-        if (input.value1 === Nil.value) {
-          break;
-        }
-
-        if (b) {
+          output.value1 = new Cons(input.value0, Nil.value);
           output = output.value1;
         }
-
-        input = input.value1;
       }
-
-      output.value1 = Nil.value;
 
       return result;
     }
