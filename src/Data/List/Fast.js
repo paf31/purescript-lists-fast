@@ -68,26 +68,17 @@ exports.zipWith = function(f) {
       } else if (l2 === Nil.value) {
         return l2;
       } else {
-        var result = new Cons(null, null);
-
         var input1 = l1;
         var input2 = l2;
+        var result = new Cons(f(input1.value0, input2.value0), Nil.value);
         var output = result;
 
-        while (true) {
-          output.value0 = f(input1.value0, input2.value0);
-          output.value1 = new Cons(null, null);
-
-          if (input1.value1 === Nil.value || input2.value1 === Nil.value) {
-            break;
-          }
-
+        while (input1.value1 !== Nil.value && input2.value1 !== Nil.value) {
           input1 = input1.value1;
           input2 = input2.value1;
+          output.value1 = new Cons(f(input1.value0, input2.value0), Nil.value);
           output = output.value1;
         }
-
-        output.value1 = Nil.value;
 
         return result;
       }
