@@ -8,27 +8,15 @@ exports.map = function(f) {
     if (l === Nil.value) {
       return l;
     } else {
-      // Allocate a cons cell
-      var result = new Cons(null, null);
-
       var input = l;
+      var result = new Cons(f(input.value0), Nil.value);
       var output = result;
 
-      while (true) {
-        // Fill in the cons cell and allocate the next one
-        output.value0 = f(input.value0);
-        output.value1 = new Cons(null, null);
-
-        if (input.value1 === Nil.value) {
-          break;
-        }
-
+      while (input.value1 !== Nil.value) {
         input = input.value1;
+        output.value1 = new Cons(f(input.value0), Nil.value);
         output = output.value1;
       }
-
-      // Fill in the last remaining reference with Nil
-      output.value1 = Nil.value;
 
       return result;
     }
